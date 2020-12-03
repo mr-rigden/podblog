@@ -1,0 +1,18 @@
+{% include 'top.html' %}
+<main>
+<div class="article">
+        <div class="article-header">
+          <h1>{{episode.title}}</h1>
+          <p>Posted {{episode.pubDate_pretty}}</p>
+        </div>
+        <div class="article-body">
+            <audio controls preload="none">
+                <source src="{{episode.enclosure.url}}" type="audio/mpeg">
+            </audio>
+        {{episode.description}}
+        </div>
+</div>
+
+
+</main>
+{% include 'bottom.html' %}

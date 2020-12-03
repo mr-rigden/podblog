@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'Hind';
+    src: url('subset-Hind-Light.woff2') format('woff2'),
+        url('subset-Hind-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Hind';
+    src: url('subset-Hind-Medium.woff2') format('woff2'),
+        url('subset-Hind-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Hind';
+    src: url('subset-Hind-Bold.woff2') format('woff2'),
+        url('subset-Hind-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Hind';
+    src: url('subset-Hind-SemiBold.woff2') format('woff2'),
+        url('subset-Hind-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Hind';
+    src: url('subset-Hind-Regular.woff2') format('woff2'),
+        url('subset-Hind-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

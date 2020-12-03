@@ -1,0 +1,25 @@
+<div class="about-lists">
+  <div>
+  
+
+    <h3>Subscribe</h3>
+    <ul>
+      {% for each in podcast.config.subscribe %}
+      <li>
+        <a href="{{each.URL}}"> {{each.Name}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div>
+    <h3>Social</h3>
+    <ul>
+      {% for each in podcast.config.social %}
+      <li>
+        <a href="{{each.URL}}"> {{each.Name}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

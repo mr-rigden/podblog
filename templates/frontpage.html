@@ -1,0 +1,22 @@
+{% include 'top.html' %}
+<main>
+  <div class="about">
+    <img src="{{podcast["itunes:image"] }}" />
+    <h1>{{podcast["title"] }}</h1>
+    <p>
+      {{podcast["description"] }}
+    </p>
+    {% include 'aboutlists.html' %}
+  </div>
+  {% for episode in podcast.episodes %}
+
+  <div class="article summary">
+    <div class="article-header">
+      <h3>
+        <a href="{{episode.title_slug}}">{{episode.title}}</a>
+      </h3>
+      <p>Posted {{episode.pubDate_pretty}}</p>
+    </div>
+  </div>
+  {% endfor %} {% include 'bottom.html' %}
+</main>

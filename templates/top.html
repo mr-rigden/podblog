@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name=generator content="PodBlog 0.1">
+    <meta name="robots" content="index, follow">    
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+
+    {% if episode %}
+         <title>{{episode.title}}</title>
+         <meta name="description" content="{{episode.description|striptags|truncate(160 , True)}}" />
+         <link rel="stylesheet" href="../static/normalize.css" />
+         <link rel="stylesheet" href="../static/hind/stylesheet.css" />
+         <link rel="stylesheet" href="../static/style.css" />
+         <link rel="canonical" href="{{podcast.config.base_url}}/{{episode.title_slug}}" />
+
+    {% else %}
+        <title>{{podcast.title}}</title>
+        <meta name="description" content="{{podcast.description|striptags|truncate(160 , True)}}" />
+        <link rel="stylesheet" href="static/normalize.css" />
+        <link rel="stylesheet" href="static/hind/stylesheet.css" />
+        <link rel="stylesheet" href="static/style.css" />
+        <link rel="canonical" href="{{podcast.config.base_url}}" />
+    {% endif %}
+    
+
+
+  </head>
+
+  <body>
+    <header>
+      <div id="ribbon">
+        <div class="site-name">
+        {% if episode %}
+        <a href="../">{{podcast.title}}</a>
+
+        {% else %}
+        {{podcast.title}}
+        {% endif %}
+
+
+        </div>
+        <div onclick="toggleMenu()" class="site-menu">
+          <?xml version="1.0" ?><!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+          <svg
+            height="32px"
+            id="Layer_1"
+            style="enable-background: new 0 0 32 32"
+            version="1.1"
+            viewBox="0 0 32 32"
+            width="1.5rem"
+            xml:space="preserve"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <path
+              d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"
+            />
+          </svg>
+        </div>
+      </div>
+      <nav id="menu" class="hidden">
+        <ul>
+        {% for each in podcast.config.menu %}
+            <li>
+                <a href="{{each.URL}}"> {{each.Name}}</a>
+            </li>
+       {% endfor %}
+
+        </ul>
+      </nav>
+    </header>
