@@ -16,10 +16,10 @@ from jinja2 import Environment, FileSystemLoader
 
 import rss_to_dict
 
+from config import CONFIG
 
-DEBUG = True
-if DEBUG:
-    requests_cache.install_cache("audio_cache")
+if CONFIG["DEBUG"]:
+    requests_cache.install_cache("test_cache")
 
 
 BASE_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -79,7 +79,6 @@ def download_audio_file(url, audio_dir):
     file_name = os.path.basename(urlparse(header.url).path)
     file_path = os.path.join(audio_dir, file_name)
     if os.path.exists(file_path):
-        print("exists")
         return file_name
     r = requests.get(url, allow_redirects=True)
     open(file_path, "wb").write(r.content)
@@ -94,10 +93,8 @@ def download_rss(podcast):
 
 
 def download_coverart(podcast):
-    # podcast_dir = os.path.join(output_dir, slugify(podcast_dict["title"]))
     header = requests.head(podcast["itunes:image"], allow_redirects=True)
     file_name = os.path.basename(urlparse(header.url).path)
-    # file_path = os.path.join(podcast_dir, "img", file_name)
     file_path = os.path.join(podcast["config"]["www"], file_name)
     if os.path.exists(file_path):
         return file_name
@@ -113,7 +110,7 @@ def make_episode(episode, podcast):
     episode_path = os.path.join(
         podcast["config"]["www"], episode["title_slug"], "index.html"
     )
-    if not DEBUG:
+    if not CONFIG["DEBUG"]:
         if os.path.exists(episode_path):
             return
     os.makedirs(os.path.dirname(episode_path), exist_ok=True)
@@ -158,7 +155,7 @@ def initialize_new_podblog(url):
     podcast["title_slug"] = slugify(podcast["title"])
     podcast_path = os.path.join(OUT_PUT_PATH, podcast["title_slug"])
     podcast_www_path = os.path.join(podcast_path, "www")
-    if not DEBUG:
+    if not CONFIG["DEBUG"]:
         if os.path.isdir(podcast_path):
             print("Podblog already exists")
             exit()

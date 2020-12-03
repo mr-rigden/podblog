@@ -6,7 +6,10 @@ import requests
 import xmltodict
 import requests_cache
 
-requests_cache.install_cache("test_cache")
+from config import CONFIG
+
+if CONFIG["DEBUG"]:
+    requests_cache.install_cache("test_cache")
 
 
 def parse_pubDate(pubDate):
